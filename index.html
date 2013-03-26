@@ -5,32 +5,140 @@
 		<title>HTML5IL splash</title>
 
 		<style>
-			@-webkit-keyframes flipInY {
-			    0% {
-			        -webkit-transform: perspective(400px) rotateY(90deg);
-			        opacity: 0;
-			    }
-			    40% {
-			        -webkit-transform: perspective(400px) rotateY(-10deg);
-			    }
-			    70% {
-			        -webkit-transform: perspective(400px) rotateY(10deg);
-			    }
-			    100% {
-			        -webkit-transform: perspective(400px) rotateY(0deg);
-			        opacity: 1;
-			    }
+			* {
+				margin: 0;
+				padding: 0;
 			}
-
-			.flipInY {
-				-webkit-backface-visibility: visible !important;
-				-webkit-animation-name: flipInY;
+			header {
+				position: relative;
+				margin: 50px auto 0;
+				width: 181px;
+			}
+			header {
+				opacity: 0;
+				-webkit-transition: opacity .5s ease-in;
+			}
+			header.ready {
+				opacity: 1;
+			}
+			span {
+				display: inline-block;
+			}
+			span.char5 {
+				background-image: url('img/badge.png');
+				background-size: contain;
+				background-repeat: no-repeat;
+				height: 0;
+				padding-top: 40px;
+				width: 40px;
+				overflow: hidden;
+				position: relative;
+				top: 10px;
+				z-index: 2;
+			}
+			.animate span:not(.char5){
+				-webkit-animation-duration: 1s;
+				-webkit-animation-timing-function: ease;
+				-webkit-animation-fill-mode: forwards;
+				-webkit-animation-name: flip;
+			}
+			ul {
+				list-style: none;
+			}
+			div {
+				position: absolute;
+				left: 107px;
+				top: 20px;
+				width: 0;
+				height: 0;
+				background-color: blue;
+				z-index: 1;
+			}
+			.animate li div {
+				-webkit-animation-duration: 1s;
+				-webkit-animation-timing-function: ease;
+				-webkit-animation-fill-mode: forwards;
+				-webkit-animation-delay: 1s;
+			}
+			.animate li:nth-child(1) div {
+				-webkit-animation-name: anim1;
+			}
+			.animate li:nth-child(2) div {
+				-webkit-animation-name: anim2;
+			}
+			.animate li:nth-child(3) div {
+				-webkit-animation-name: anim3;
+			}
+			.animate li:nth-child(4) div {
+				-webkit-animation-name: anim4;
+			}
+			@-webkit-keyframes anim1 {
+				100% {
+					-webkit-transform: translate(-90px, -40px);
+					width: 20px;
+					height: 20px;
+				}
+			}
+			@-webkit-keyframes anim2 {
+				100% {
+					-webkit-transform: translate(50px, -50px);
+					width: 20px;
+					height: 20px;
+				}
+			}
+			@-webkit-keyframes anim3 {
+				100% {
+					-webkit-transform: translate(35px, 50px);
+					width: 20px;
+					height: 20px;
+				}
+			}
+			@-webkit-keyframes anim4 {
+				100% {
+					-webkit-transform: translate(-60px, 50px);
+					width: 20px;
+					height: 20px;
+				}
+			}
+			@-webkit-keyframes flip {
+				0% {
+					-webkit-transform: rotateY(180deg);
+					opacity: 0;
+				}
+				100% {
+					opacity: 1;
+					-webkit-transform: rotateY(360deg);
+				}
 			}
 		</style>
 	</head>
 	
 	<body>
-		<h1>HTML5IL<h1>
+		<header>
+			<h1>HTML5-IL</h1>
+			<ul>
+				<li><div></div></li>
+				<li><div></div></li>
+				<li><div></div></li>
+				<li><div></div></li>
+			</ul>
+		</header>
 	</body>
+
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="js/lib/lettering.js/jquery.lettering.js"></script>
+	<script>
+	  	$("h1").lettering();
+	  	$("header").addClass("ready");
+	  	$("h1 span:last-child").bind('webkitTransitionEnd', function() {
+			console.log("done");
+		});
+	  	$("h1 span").each(function(i, el) {
+	  		var delay = i * 50;
+	  		el.style["-webkit-animation-delay"] = delay+"ms";
+	  	});
+	  	$("header").addClass("animate");
+	</script>
+
 </html>
 
