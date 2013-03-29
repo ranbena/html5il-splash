@@ -1,0 +1,117 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-size: 10px;
+}
+header {
+	position: relative;
+	margin: 5rem auto 0;
+	width: 18.1rem;
+}
+header {
+	opacity: 0;
+	-webkit-transition: opacity .5s ease-in;
+}
+.ready header {
+	opacity: 1;
+}
+h1 {
+	font-size: 3.1rem;
+}
+
+/* Letters */
+span {
+	display: inline-block;
+	opacity: 0;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-timing-function: ease;
+	-webkit-animation-fill-mode: forwards;
+}
+span.char5 {
+	background-image: url('../img/HTML5_Badge.svg');
+	background-size: contain;
+	background-repeat: no-repeat;
+	height: 0;
+	padding-top: 4rem;
+	width: 4rem;
+	overflow: hidden;
+	position: relative;
+	top: 1rem;
+	z-index: 2;
+	opacity: 1;
+}
+.animate span:not(.char5){
+	-webkit-animation-name: flip;
+}
+
+@-webkit-keyframes flip {
+	0% {
+		-webkit-transform: rotateY(180deg);
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: rotateY(360deg);
+	}
+}
+
+/* icons */
+div, ul, li {
+	-webkit-transition-delay: 0.5s !important;
+}
+div {
+	top: 2rem;
+	left: 10.5rem;
+	position: absolute;
+	-webkit-transform: rotate(0deg);
+	-webkit-transition: all 10s ease-out;
+}
+.animate div {
+	-webkit-transform: rotate(-10deg);
+}
+ul {
+	list-style: none;
+	-webkit-transition: all .5s cubic-bezier(.7,1.12,.27,.96);
+	-webkit-transform: rotate(-180deg);
+	opacity: 0;
+}
+.animate ul {
+	-webkit-transform: rotate(-360deg);
+	opacity: 1;
+}
+li {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 1.5rem;
+	height: 1.5rem;
+	z-index: 1;
+	-webkit-transition: all .5s cubic-bezier(.7,1.12,.27,.96);
+	-webkit-transform: translate(0.1rem,0.1rem);
+}
+.animate li:nth-child(1) {
+	-webkit-transform: translate(-9rem, -5rem);
+}
+.animate li:nth-child(2) {
+	-webkit-transform: translate(5rem, -5rem);
+}
+.animate li:nth-child(3) {
+	-webkit-transform: translate(5rem, 5.5rem);
+}
+.animate li:nth-child(4) {
+	-webkit-transform: translate(-5.5rem, 4.5rem);
+}
+.animate li:nth-child(5) {
+	-webkit-transform: translate(-3rem, -6rem);
+}
+.animate li:nth-child(6) {
+	-webkit-transform: translate(8rem, -2rem);
+}
+.animate li:nth-child(7) {
+	-webkit-transform: translate(-0.5rem, 6.5rem);
+}
+.animate li:nth-child(8) {
+	-webkit-transform: translate(-10rem, 3rem);
+}
