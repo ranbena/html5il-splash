@@ -3,16 +3,18 @@
 	padding: 0;
 }
 body {
-	font-size: 10px;
+	font-size: 20px;
+	font-family: arial black;
+	background: #4d5053 url('../img/bg_pattern.png');
 }
 header {
 	position: relative;
 	margin: 5rem auto 0;
-	width: 18.1rem;
+	text-align: center;
 }
 header {
 	opacity: 0;
-	-webkit-transition: opacity .5s ease-in;
+	-webkit-transition: opacity .5s linear;
 }
 .ready header {
 	opacity: 1;
@@ -23,26 +25,26 @@ h1 {
 
 /* Letters */
 span {
-	display: inline-block;
 	opacity: 0;
 	-webkit-animation-duration: 1s;
 	-webkit-animation-timing-function: ease;
 	-webkit-animation-fill-mode: forwards;
 }
-span.char5 {
+span:nth-child(5) {
 	background-image: url('../img/HTML5_Badge.svg');
 	background-size: contain;
 	background-repeat: no-repeat;
 	height: 0;
-	padding-top: 4rem;
-	width: 4rem;
+	padding-top: 3.5rem;
+	width: 3.5rem;
 	overflow: hidden;
 	position: relative;
-	top: 1rem;
+	top: .8rem;
 	z-index: 2;
 	opacity: 1;
+	display: inline-block;
 }
-.animate span:not(.char5){
+.animateText span:not(:nth-child(5)){
 	-webkit-animation-name: flip;
 }
 
@@ -59,27 +61,27 @@ span.char5 {
 
 /* icons */
 div, ul, li {
-	-webkit-transition-delay: 0.5s !important;
+	-webkit-transition-delay: .5s !important;
 }
 div {
 	top: 2rem;
-	left: 10.5rem;
+	left: 50%;
 	position: absolute;
 	-webkit-transform: rotate(0deg);
 	-webkit-transition: all 10s ease-out;
 }
-.animate div {
+.animateSwirl div {
 	-webkit-transform: rotate(-10deg);
 }
 ul {
 	list-style: none;
+	position: relative;
+	left: 2.35rem;
 	-webkit-transition: all .5s cubic-bezier(.7,1.12,.27,.96);
 	-webkit-transform: rotate(-180deg);
-	opacity: 0;
 }
-.animate ul {
+.animateSwirl ul {
 	-webkit-transform: rotate(-360deg);
-	opacity: 1;
 }
 li {
 	position: absolute;
@@ -89,29 +91,33 @@ li {
 	height: 1.5rem;
 	z-index: 1;
 	-webkit-transition: all .5s cubic-bezier(.7,1.12,.27,.96);
-	-webkit-transform: translate(0.1rem,0.1rem);
+	-webkit-transform: translate(0,0);
+	opacity: 0;
 }
-.animate li:nth-child(1) {
+.animateIcons li {
+	opacity: 1;
+}
+.animateIcons li:nth-child(1) {
 	-webkit-transform: translate(-9rem, -5rem);
 }
-.animate li:nth-child(2) {
+.animateIcons li:nth-child(2) {
 	-webkit-transform: translate(5rem, -5rem);
 }
-.animate li:nth-child(3) {
+.animateIcons li:nth-child(3) {
 	-webkit-transform: translate(5rem, 5.5rem);
 }
-.animate li:nth-child(4) {
+.animateIcons li:nth-child(4) {
 	-webkit-transform: translate(-5.5rem, 4.5rem);
 }
-.animate li:nth-child(5) {
+.animateIcons li:nth-child(5) {
 	-webkit-transform: translate(-3rem, -6rem);
 }
-.animate li:nth-child(6) {
+.animateIcons li:nth-child(6) {
 	-webkit-transform: translate(8rem, -2rem);
 }
-.animate li:nth-child(7) {
+.animateIcons li:nth-child(7) {
 	-webkit-transform: translate(-0.5rem, 6.5rem);
 }
-.animate li:nth-child(8) {
+.animateIcons li:nth-child(8) {
 	-webkit-transform: translate(-10rem, 3rem);
 }

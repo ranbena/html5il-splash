@@ -25,18 +25,39 @@
 		</header>
 	</body>
 
-	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-	<script src="js/lib/lettering.js/jquery.lettering.js"></script>
 	<script>
 		// prepare
-	  	$("h1").lettering();
-	  	$("h1 span").each(function(i, el) {
-	  		var delay = i * 50;
+		letter(document.querySelector("h1"), function(i, el) {
+			var delay = i * 50;
 	  		el.style["-webkit-animation-delay"] = delay+"ms";
-	  	});
+		});
 	  	
-	  	// go!
-	  	$("body").addClass("ready animate");
+	  	// ready
+	  	document.body.classList.add("ready");
+	  	// animate
+	  	document.body.classList.add("animateText");
+	  	document.body.classList.add("animateIcons");
+	  	document.body.classList.add("animateSwirl");
+	  	
+	  	// bring it back
+	  	setTimeout(function() {
+	  		document.body.classList.remove("animateIcons");
+	  	}, 2000);
+
+	  	function letter(el, cb) {
+	  		var elText = el.innerText,
+	  			frag = document.createDocumentFragment(),
+	  			innerElTagName = "span";
+
+		  	for (var i=0, len=elText.length; i<len; i++) {
+		  		var innerEl = document.createElement(innerElTagName);
+		  		innerEl.innerText = elText[i];
+		  		frag.appendChild(innerEl);
+		  		cb && cb(i, innerEl);
+		  	}
+		  	el.innerHTML = "";
+		  	el.appendChild(frag);
+	  	}
 	</script>
 
 </html>
