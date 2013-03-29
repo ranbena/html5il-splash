@@ -1,6 +1,6 @@
 // prepare
 letter(document.querySelector("h1"), function(i, el) {
-	var delay = i * 50;
+	var delay = i * (config && config.letterAnimDelay || 50);
 		el.style["-webkit-animation-delay"] = delay+"ms";
 });
 	
@@ -9,11 +9,10 @@ document.body.classList.add("ready");
 // animate
 document.body.classList.add("animateText");
 document.body.classList.add("animateIcons");
-document.body.classList.add("animateSwirl");
 // animate back
 setTimeout(function() {
-	document.body.classList.remove("animateIcons");
-}, 2000);
+	document.body.classList.add("animateIconsBack");
+}, config && config.backAnimDelay || 3000);
 
 function letter(el, cb) {
 	var elText = el.innerText,

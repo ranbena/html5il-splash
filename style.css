@@ -4,7 +4,7 @@
 }
 body {
 	font-size: 20px;
-	background: #4d5053 url('../img/bg_pattern.png');
+	background: #4d5053 url('img/bg_pattern.png');
 }
 header {
 	position: relative;
@@ -25,13 +25,14 @@ h1 {
 
 /* Letters */
 span {
+	display: inline-block;
 	opacity: 0;
 	-webkit-animation-duration: 1s;
 	-webkit-animation-timing-function: ease;
 	-webkit-animation-fill-mode: forwards;
 }
 span:nth-child(5) {
-	background-image: url('../img/HTML5_Badge.svg');
+	background-image: url('img/html5_badge.svg');
 	background-size: contain;
 	background-repeat: no-repeat;
 	height: 0;
@@ -42,7 +43,6 @@ span:nth-child(5) {
 	top: .8rem;
 	z-index: 2;
 	opacity: 1;
-	display: inline-block;
 }
 .animateText span:not(:nth-child(5)){
 	-webkit-animation-name: flip;
@@ -63,6 +63,10 @@ span:nth-child(5) {
 div, ul, li {
 	-webkit-transition-delay: .5s !important;
 }
+.animateIconsBack ul,
+.animateIconsBack li {
+	-webkit-transition-delay: 0s !important;
+}
 div {
 	top: 2rem;
 	left: 50%;
@@ -70,7 +74,7 @@ div {
 	-webkit-transform: rotate(0deg);
 	-webkit-transition: all 10s ease-out;
 }
-.animateSwirl div {
+.animateIcons div {
 	-webkit-transform: rotate(-10deg);
 }
 ul {
@@ -80,8 +84,11 @@ ul {
 	-webkit-transition: all .5s cubic-bezier(.7,1.12,.27,.96);
 	-webkit-transform: rotate(-180deg);
 }
-.animateSwirl ul {
+.animateIcons ul {
 	-webkit-transform: rotate(-360deg);
+}
+.animateIconsBack ul {
+	-webkit-transform: rotate(-540deg);
 }
 li {
 	position: absolute;
@@ -120,4 +127,8 @@ li {
 }
 .animateIcons li:nth-child(8) {
 	-webkit-transform: translate(-10rem, 3rem);
+}
+.animateIconsBack li {
+	-webkit-transform: translate(0,0) !important;
+	opacity: 0;
 }
