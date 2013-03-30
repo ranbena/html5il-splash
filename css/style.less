@@ -1,0 +1,234 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+@font-face {
+	font-family: 'Gotham Ultra';
+	src: url('../fonts/gotham_ultra.ttf');
+}
+body {
+	font-size: 10px;
+	background: #4d5053 url('../img/bg_pattern.png');
+}
+header {
+	position: relative;
+	margin: 5rem auto 0;
+	text-align: center;
+	opacity: 0;
+	.transition(opacity .5s);
+
+	.ready & {
+		opacity: 1;
+	}
+}
+h1 {
+	font-size: 3.1rem;
+	font-family: 'Gotham Ultra';
+
+	span {
+		display: inline-block;
+		.transform(rotateY(90deg));
+		.transition(all .5s ease 1s);
+
+		.loopDelays(8, 50ms);
+		
+		&:nth-child(5) {
+			background-image: url('../img/html5_badge.svg');
+			background-size: contain;
+			background-repeat: no-repeat;
+			height: 0;
+			padding-top: 3.5rem;
+			width: 3.5rem;
+			overflow: hidden;
+			position: relative;
+			top: .8rem;
+			z-index: 2;
+		}
+		.animateText &{
+			.transform(rotateY(0deg));
+		}
+	}
+}
+
+/* icons */
+div, ul, li {
+	.transition-delay(.5s) !important;
+	
+	.animateIconsBack & {
+		.transition-delay() !important;
+	}
+}
+div {
+	top: 2rem;
+	left: 50%;
+	position: absolute;
+	.transform(rotateY(0deg));
+	.transition(transform,10s,ease-out); 
+	
+	.animateIcons & {
+		.transform(rotate(-10deg));
+	}
+
+	.animateIconsBack & {
+		transition-duration: 0;
+	}
+}
+ul {
+	list-style: none;
+	position: relative;
+	left: 2.35rem;
+	.transform(rotate(-180deg));
+	.transition(all .5s @curve);
+	opacity: 0;
+
+	.animateIcons & {
+		.transform(rotate(-360deg));
+		opacity: 1;
+	}
+	.animateIconsBack & {
+		/* it's better if the elements fade out before getting to the center */
+		.transition(opacity .3s);
+		opacity: 0;
+		/* must be an animation or else moz changes rotation direction */
+		.animation(flipBack, 0.5s, @curve);
+	}
+}
+@flipBackFrom: rotate(-360deg) translate(0,0);
+@flipBackTo: rotate(-540deg) translate(-1rem, -1rem);
+
+@-webkit-keyframes flipBack {
+	0%   {-webkit-transform: @flipBackFrom}
+	100% {-webkit-transform: @flipBackTo}
+}
+@-moz-keyframes flipBack {
+	0%   {-moz-transform: @flipBackFrom}
+	100% {-moz-transform: @flipBackTo}
+}
+@-ms-keyframes flipBack {
+	0%   {-ms-transform: @flipBackFrom}
+	100% {-ms-transform: @flipBackTo}
+}
+@-o-keyframes flipBack {
+	0%   {-o-transform: @flipBackFrom}
+	100% {-o-transform: @flipBackTo}
+}
+@keyframes flipBack {
+	0%   {transform: @flipBackFrom}
+	100% {transform: @flipBackTo}
+}
+li {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 1.5rem;
+	height: 1.5rem;
+	z-index: 1;
+	.transition(all .5s @curve);
+	.transform(translate(0,0));
+
+	.animateIcons & {
+		.icon(1, -9rem, -5rem, -.2rem, -.2rem);
+	    .icon(2, -3rem, -6rem, -.2rem, -.3rem);
+	   	.icon(3, 5rem, -5rem, .3rem, -.3rem);
+	    .icon(4, 8rem, -2rem, .3rem, -.2rem);
+	    .icon(5, 5rem, 5.5rem, .3rem, .2rem);
+	    .icon(6, -0.5rem, 6.5rem, .2rem, .3rem);
+	    .icon(7, -5.5rem, 4.5rem, -.2rem, .3rem);
+	    .icon(8, -10rem, 3rem, -.3rem, .2rem);
+  	}
+
+	.animateIconsBack & {
+		.transform(translate(0,0)) !important;
+	}
+}
+
+// Less CSS stuff
+
+@curve: cubic-bezier(.7,1.12,.27,.96);
+
+.transition (@value) {
+	-webkit-transition: @value;
+	-moz-transition: @value;
+	-ms-transition: @value;
+	-o-transition: @value;	
+	transition: @value;
+}
+.transition (@prop; @duration; @easing:linear; @delay:0) {
+	-webkit-transition-property: @prop;
+	-moz-transition-property: @prop;
+	-ms-transition-property: @prop;
+	-o-transition-property: @prop;
+	transition-property: @prop;
+	.transition-duration(@duration);
+	.transition-easing(@easing);
+	.transition-delay(@delay);
+}
+.transition-easing (@value: linear) {
+	-webkit-transition-timing-function: @value;
+  	-moz-transition-timing-function: @value;
+  	-ms-transition-timing-function: @value;
+  	-o-transition-timing-function: @value;
+  	transition-timing-function: @value;
+}
+.transition-duration (@value) {
+	-webkit-transition-duration: @value;
+  	-moz-transition-duration: @value;
+  	-ms-transition-duration: @value;
+  	-o-transition-duration: @value;
+  	transition-duration: @value;
+}
+.transition-delay (@value:0s) {
+  -webkit-transition-delay: @value;
+  -moz-transition-delay: @value;
+  -ms-transition-delay: @value;
+  -o-transition-delay: @value;
+  transition-delay: @value;
+}
+.transform(@value) {
+  -webkit-transform: @value;
+  -moz-transform: @value;
+  -ms-transform: @value;
+  -o-transform: @value;
+  transform: @value;
+}
+.filter(...) {
+	-webkit-filter: @arguments;
+	filter: @arguments;
+}
+.filterShadow(@top: 0, @left: 0 , @blur: .3rem, @color: rgba(0,0,0,.2)) {
+	.filter(drop-shadow( @top @left @blur @color ));
+}
+.loopDelays(@iterations, @delay) {
+	.loop(@index) when (@index > 0) {
+		&:nth-child(@{index}) {
+			.transition-delay(@index*@delay);
+		}
+		.loop(@index - 1);
+	}
+	.loop (@iterations);
+}
+.icon(@index, @translateX, @translateY, @shadowX, @shadowY) {
+	&:nth-child(@index) {
+		.transform(translate(@translateX, @translateY));
+    }
+    &:nth-child(@index) img{
+		.filterShadow(@shadowX, @shadowY);
+    }
+}
+.animation(@name, @duration, @easing) {
+	-webkit-animation-name: @name;
+	-webkit-animation-duration: @duration;
+	-webkit-animation-timing-function: @easing;
+	-moz-animation-name: @name;
+	-moz-animation-duration: @duration;
+	-moz-animation-timing-function: @easing;
+	-ms-animation-name: @name;
+	-ms-animation-duration: @duration;
+	-ms-animation-timing-function: @easing;
+	-o-animation-name: @name;
+	-o-animation-duration: @duration;
+	-o-animation-timing-function: @easing;
+	animation-name: @name;
+	animation-duration: @duration;
+	animation-timing-function: @easing;
+}

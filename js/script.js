@@ -1,8 +1,5 @@
 // prepare
-letter(document.querySelector("h1"), function(i, el) {
-	var delay = i * (config && config.letterAnimDelay || 50);
-		el.style["-webkit-transition-delay"] = delay+"ms";
-});
+letter(document.querySelector("h1"));
 	
 // ready
 document.body.classList.add("ready");
@@ -16,18 +13,18 @@ setTimeout(function() {
 // animate back
 setTimeout(function() {
 	document.body.classList.add("animateIconsBack");
-}, config && config.backAnimDelay || 3000);
+}, 3000);
 
-function letter(el, cb) {
-	var elText = el.innerText,
+function letter(el) {
+	var textProp = "textContent" in el ? "textContent" : "innerText";
+		elText = el[textProp],
 		frag = document.createDocumentFragment(),
 		innerElTagName = "span";
 
 	for (var i=0, len=elText.length; i<len; i++) {
 		var innerEl = document.createElement(innerElTagName);
-		innerEl.innerText = elText[i];
+		innerEl[textProp] = elText[i];
 		frag.appendChild(innerEl);
-		cb && cb(i, innerEl);
 	}
 	el.innerHTML = "";
 	el.appendChild(frag);
