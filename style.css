@@ -14,8 +14,7 @@ body {
 header {
 	position: relative;
 	margin: 5rem auto 0;
-	text-align: center;}
-header {
+	width: 17rem;
 	opacity: 0;
 	-webkit-transition: opacity .5s linear;
 }
@@ -25,13 +24,11 @@ header {
 h1 {
 	font-size: 3.1rem;
 	font-family: 'Gotham Ultra';
-
 }
 
 /* Letters */
 span {
 	display: inline-block;
-	-webkit-backface-visibility:hidden;
 	-webkit-transform: rotateY(90deg);
 	-webkit-transition: all .5s ease 1s;
 }
@@ -64,7 +61,7 @@ div {
 	left: 50%;
 	position: absolute;
 	-webkit-transform: rotate(0deg);
-	-webkit-transition: all 10s ease-out;
+	-webkit-transition: -webkit-transform 10s ease-out;
 }
 .animateIcons div {
 	-webkit-transform: rotate(-10deg);
