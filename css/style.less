@@ -24,6 +24,7 @@ header {
 h1 {
 	font-size: 3.1rem;
 	font-family: 'Gotham Ultra';
+	text-shadow: 0 0 1rem rgba(255,255,255,.1);
 
 	span {
 		display: inline-block;
@@ -127,14 +128,57 @@ li {
 	.transform(translate(0,0));
 
 	.animateIcons & {
-		.icon(1, -9rem, -5rem, -.2rem, -.2rem);
-	    .icon(2, -3rem, -6rem, -.2rem, -.3rem);
-	   	.icon(3, 5rem, -5rem, .3rem, -.3rem);
-	    .icon(4, 8rem, -2rem, .3rem, -.2rem);
-	    .icon(5, 5rem, 5.5rem, .3rem, .2rem);
-	    .icon(6, -0.5rem, 6.5rem, .2rem, .3rem);
-	    .icon(7, -5.5rem, 4.5rem, -.2rem, .3rem);
-	    .icon(8, -10rem, 3rem, -.3rem, .2rem);
+		.icon(1, 1, -20deg, -9.5rem, -3.6rem, -.2rem, -.2rem);
+	    .icon(2, 1.2rem, 10deg, -3.7rem, -2.7rem, -.2rem, -.3rem);
+	   	.icon(3, 1.7rem, 0, -.8rem, -5.5rem, .3rem, -.3rem);
+	    .icon(4, 2.7rem, 30deg, 4.5rem, -3.5rem, .3rem, -.2rem);
+	    .icon(5, 1, -20deg, 1.5rem, 2.5rem, .3rem, .2rem);
+	    .icon(6, 2.7rem, 30deg, -8.2rem, 4.5rem, .2rem, .3rem);
+	    .icon(7, 1, 0, -5.2rem, 2.8rem, -.2rem, .3rem);
+	    .icon(8, 1rem, 25deg, -11.5rem, 2.5rem, -.3rem, .2rem);
+  	}
+
+  	.psuedoIcon {
+  		content: "";
+		position: absolute;
+		opacity: .2;
+		//.filter(blur(0.05rem));
+  	}
+
+  	&:nth-child(3):before {
+  		.psuedoIcon();
+		top: 0rem;
+		left: -6rem;
+		width: 1.1rem;
+		height: 1.2rem;
+		background: url(../img/html5_semantics.svg) no-repeat;
+		.transform(rotate(153deg));
+  	}
+  	&:nth-child(3):after {
+  		.psuedoIcon();
+		top: 2.3rem;
+		left: 2.1rem;
+		width: 1.1rem;
+		height: 1.2rem;
+		background: url(../img/html5_perfintegration.svg) no-repeat;
+  	}
+  	&:nth-child(5):before {
+  		.psuedoIcon();
+		top: 1.1rem;
+		left: -4.3rem;
+		width: 1.9rem;
+		height: 1.9rem;
+		background: url(../img/html5_device_access.svg) no-repeat;
+		.transform(rotate(-10deg));
+  	}
+  	&:nth-child(5):after {
+  		.psuedoIcon();
+		top: 2.1rem;
+		left: 4.1rem;
+		width: 1.5rem;
+		height: 1.2rem;
+		background: url(../img/html5_3d_effects.svg) no-repeat;
+		.transform(rotate(35deg));
   	}
 
 	.animateIconsBack & {
@@ -207,12 +251,13 @@ li {
 	}
 	.loop (@iterations);
 }
-.icon(@index, @translateX, @translateY, @shadowX, @shadowY) {
+.icon(@index, @width, @rotate, @translateX, @translateY, @shadowX, @shadowY) {
 	&:nth-child(@index) {
-		.transform(translate(@translateX, @translateY));
+		.transform(translate(@translateX, @translateY) rotate(@rotate));
     }
     &:nth-child(@index) img{
-		.filterShadow(@shadowX, @shadowY);
+		//.filterShadow(@shadowX, @shadowY);
+		width: @width;
     }
 }
 .animation(@name, @duration, @easing) {

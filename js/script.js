@@ -13,7 +13,7 @@ setTimeout(function() {
 // animate back
 setTimeout(function() {
 	document.body.classList.add("animateIconsBack");
-}, 3000);
+}, 2000);
 
 function letter(el) {
 	var textProp = "textContent" in el ? "textContent" : "innerText";
