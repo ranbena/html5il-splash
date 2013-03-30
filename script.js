@@ -1,14 +1,18 @@
 // prepare
 letter(document.querySelector("h1"), function(i, el) {
 	var delay = i * (config && config.letterAnimDelay || 50);
-		el.style["-webkit-animation-delay"] = delay+"ms";
+		el.style["-webkit-transition-delay"] = delay+"ms";
 });
 	
 // ready
 document.body.classList.add("ready");
-// animate
-document.body.classList.add("animateText");
-document.body.classList.add("animateIcons");
+
+setTimeout(function() {
+	// animate
+	document.body.classList.add("animateText");
+	document.body.classList.add("animateIcons");
+}, 0);
+
 // animate back
 setTimeout(function() {
 	document.body.classList.add("animateIconsBack");
