@@ -7,8 +7,8 @@ letter(document.querySelector("h1"), function(i, el) {
 // ready
 document.body.classList.add("ready");
 
+// animate
 setTimeout(function() {
-	// animate
 	document.body.classList.add("animateText");
 	document.body.classList.add("animateIcons");
 }, 0);

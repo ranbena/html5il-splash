@@ -2,6 +2,11 @@
 	margin: 0;
 	padding: 0;
 }
+@font-face
+{
+	font-family: 'Gotham Ultra';
+	src: url('fonts/gotham_ultra.ttf');
+}
 body {
 	font-size: 20px;
 	background: #4d5053 url('img/bg_pattern.png');
@@ -9,9 +14,7 @@ body {
 header {
 	position: relative;
 	margin: 5rem auto 0;
-	text-align: center;
-	font-family: arial black;
-}
+	text-align: center;}
 header {
 	opacity: 0;
 	-webkit-transition: opacity .5s linear;
@@ -21,6 +24,8 @@ header {
 }
 h1 {
 	font-size: 3.1rem;
+	font-family: 'Gotham Ultra';
+
 }
 
 /* Letters */
@@ -41,7 +46,6 @@ span:nth-child(5) {
 	position: relative;
 	top: .8rem;
 	z-index: 2;
-	/*-webkit-transform: rotateY(0);*/
 }
 .animateText span{
 	-webkit-transform: rotateY(0deg);
@@ -92,6 +96,10 @@ li {
 .animateIcons li {
 	opacity: 1;
 }
+.animateIconsBack li {
+	-webkit-transform: translate(0,0) !important;
+	opacity: 0;
+}
 .animateIcons li:nth-child(1) {
 	-webkit-transform: translate(-9rem, -5rem);
 }
@@ -115,8 +123,4 @@ li {
 }
 .animateIcons li:nth-child(8) {
 	-webkit-transform: translate(-10rem, 3rem);
-}
-.animateIconsBack li {
-	-webkit-transform: translate(0,0) !important;
-	opacity: 0;
 }
