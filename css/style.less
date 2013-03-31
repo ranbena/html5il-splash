@@ -14,12 +14,6 @@ header {
 	position: relative;
 	margin: 5rem auto 0;
 	text-align: center;
-	opacity: 0;
-	.transition(opacity .5s);
-
-	.ready & {
-		opacity: 1;
-	}
 }
 h1 {
 	font-size: 3.1rem;
@@ -29,9 +23,6 @@ h1 {
 	span {
 		display: inline-block;
 		.transform(rotateY(90deg));
-		.transition(all .5s ease 1s);
-
-		.loopDelays(8, 50ms);
 		
 		&:nth-child(5) {
 			background-image: url('../img/html5_badge.svg');
@@ -46,14 +37,19 @@ h1 {
 			z-index: 2;
 		}
 		.animateText &{
+			.transition(all .5s ease);
 			.transform(rotateY(0deg));
+
+			.loopDelays(8, 50ms);
 		}
 	}
 }
 
 /* icons */
 div, ul, li {
-	.transition-delay(.5s) !important;
+	.animateIcons & {
+		.transition-delay(.5s) !important;
+	}
 	
 	.animateIconsBack & {
 		.transition-delay() !important;
@@ -64,9 +60,9 @@ div {
 	left: 50%;
 	position: absolute;
 	.transform(rotateY(0deg));
-	.transition(transform,10s,ease-out); 
 	
 	.animateIcons & {
+		.transition(transform,10s,ease-out); 
 		.transform(rotate(-10deg));
 	}
 
@@ -79,17 +75,20 @@ ul {
 	position: relative;
 	left: 2.35rem;
 	.transform(rotate(-180deg));
-	.transition(all .5s @curve);
 	opacity: 0;
+	.filter(blur(.5rem));
 
 	.animateIcons & {
+		.transition(all .5s @curve);
 		.transform(rotate(-360deg));
 		opacity: 1;
+		.filter(blur(0));
 	}
 	.animateIconsBack & {
 		/* it's better if the elements fade out before getting to the center */
-		.transition(opacity .3s);
+		.transition(all .3s);
 		opacity: 0;
+		.filter(blur(.2rem));
 		/* must be an animation or else moz changes rotation direction */
 		.animation(flipBack, 0.5s, @curve);
 	}
@@ -131,7 +130,7 @@ li {
 		.icon(1, 1, -20deg, -9.5rem, -3.6rem, -.2rem, -.2rem);
 	    .icon(2, 1.2rem, 10deg, -3.7rem, -2.7rem, -.2rem, -.3rem);
 	   	.icon(3, 1.7rem, 0, -.8rem, -5.5rem, .3rem, -.3rem);
-	    .icon(4, 2.7rem, 30deg, 4.5rem, -3.5rem, .3rem, -.2rem);
+	    .icon(4, 2.7rem, 30deg, 4.5rem, -3.9rem, .3rem, -.2rem);
 	    .icon(5, 1, -20deg, 1.5rem, 2.5rem, .3rem, .2rem);
 	    .icon(6, 2.7rem, 30deg, -8.2rem, 4.5rem, .2rem, .3rem);
 	    .icon(7, 1, 0, -5.2rem, 2.8rem, -.2rem, .3rem);
@@ -142,7 +141,6 @@ li {
   		content: "";
 		position: absolute;
 		opacity: .2;
-		//.filter(blur(0.05rem));
   	}
 
   	&:nth-child(3):before {
@@ -197,11 +195,11 @@ li {
 	-o-transition: @value;	
 	transition: @value;
 }
-.transition (@prop; @duration; @easing:linear; @delay:0) {
-	-webkit-transition-property: @prop;
-	-moz-transition-property: @prop;
-	-ms-transition-property: @prop;
-	-o-transition-property: @prop;
+.transition (@prop;@duration;@easing:linear;@delay:0) {
+	-webkit-transition-property: -webkit-@prop;
+	-moz-transition-property: -moz-@prop;
+	-ms-transition-property: -ms-@prop;
+	-o-transition-property: -o-@prop;
 	transition-property: @prop;
 	.transition-duration(@duration);
 	.transition-easing(@easing);

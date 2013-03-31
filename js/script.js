@@ -1,19 +1,20 @@
 // prepare
 letter(document.querySelector("h1"));
-	
-// ready
-document.body.classList.add("ready");
+
+setTimeout(function() {
+	document.body.className = "animateText animateIcons";
+}, 0);
+
 
 // animate
 setTimeout(function() {
-	document.body.classList.add("animateText");
-	document.body.classList.add("animateIcons");
-}, 0);
+	//document.body.classList.add("animateIcons");
+}, 500);
 
 // animate back
 setTimeout(function() {
 	document.body.classList.add("animateIconsBack");
-}, 2000);
+}, 2500);
 
 function letter(el) {
 	var textProp = "textContent" in el ? "textContent" : "innerText";
