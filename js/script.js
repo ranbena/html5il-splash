@@ -1,15 +1,10 @@
 // prepare
 letter(document.querySelector("h1"));
 
+// animate
 setTimeout(function() {
 	document.body.className = "animateText animateIcons";
 }, 0);
-
-
-// animate
-setTimeout(function() {
-	//document.body.classList.add("animateIcons");
-}, 500);
 
 // animate back
 setTimeout(function() {
